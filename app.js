@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const path = require('path')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://e-pashudhan:1234567890@cluster0.b7zvvpp.mongodb.
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
-
+app.use(express.static(path.join(__dirname,'views','dist')))
 const counterSchema = new mongoose.Schema({
     count: { type: Number, default: 0 },
     myCount: { type: Number, default: 0 }
