@@ -12,7 +12,11 @@ mongoose.connect('mongodb+srv://e-pashudhan:1234567890@cluster0.b7zvvpp.mongodb.
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
-// app.use(express.static(path.join(__dirname,'views','dist')))
+app.use(express.static(path.join(__dirname,'views','dist')))
+app.get('/',(req,res)=>{
+    res.sendFile('index.html');
+})
+
 const counterSchema = new mongoose.Schema({
     count: { type: Number, default: 0 },
     myCount: { type: Number, default: 0 }
@@ -25,7 +29,7 @@ app.get('/api/counter', async (req, res) => {
     try {
         
         const counter = await Counter.findOne();
-        console.log(counter);
+        // console.log(counter);
         res.json(counter);
     } catch (err) {
         console.error(err);
@@ -67,7 +71,7 @@ app.get('/api/mycounter', async (req, res) => {
     try {
         
         const counter = await Counter.findOne();
-        console.log(counter);
+        // console.log(counter);
         res.json(counter);
     } catch (err) {
         console.error(err);
