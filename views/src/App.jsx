@@ -42,7 +42,7 @@ const Counter = () => {
 
   const fetchCounter = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/counter');
+      const response = await axios.get('/api/counter');
       dispatch({ type: 'SETCOUNT', count: response.data.count });
     } catch (err) {
       console.error(err);
@@ -55,7 +55,7 @@ const Counter = () => {
 
   const incrementCounter = useCallback(async () => {
     try {
-      await axios.post('http://localhost:5000/api/counter/increment');
+      await axios.post('/api/counter/increment');
       dispatch({ type: 'INCREMENT' });
     } catch (err) {
       console.error(err);
@@ -64,7 +64,7 @@ const Counter = () => {
 
   const decrementCounter = useCallback(async () => {
     try {
-      await axios.post('http://localhost:5000/api/counter/decrement');
+      await axios.post('/api/counter/decrement');
       dispatch({ type: 'DECREMENT' });
     } catch (err) {
       console.error(err);
@@ -88,7 +88,7 @@ const MyCounter = () => {
 
   const fetchMyCounter = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/mycounter');
+      const response = await axios.get('/api/mycounter');
       dispatch({ type: 'SETMYCOUNT', count: response.data.count, myCount: response.data.myCount });
     } catch (err) {
       console.error(err);
@@ -101,7 +101,7 @@ const MyCounter = () => {
 
   const incrementMyCounter = useCallback(async () => {
     try {
-      await axios.post('http://localhost:5000/api/mycounter/myincrement');
+      await axios.post('/api/mycounter/myincrement');
       dispatch({ type: 'MYINCREMENT' });
     } catch (err) {
       console.error(err);
@@ -110,7 +110,7 @@ const MyCounter = () => {
 
   const decrementMyCounter = useCallback(async () => {
     try {
-      await axios.post('http://localhost:5000/api/mycounter/mydecrement');
+      await axios.post('/api/mycounter/mydecrement');
       dispatch({ type: 'MYDECREMENT' });
     } catch (err) {
       console.error(err);
